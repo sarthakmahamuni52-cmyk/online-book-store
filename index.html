@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Online Book Store</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            background-color: #333;
+            text-align: center;
+            padding: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            color: #00bfff;
+        }
+
+        .container {
+            width: 90%;
+            margin: 30px auto;
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .books {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .book {
+            background-color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            transition: 0.3s;
+        }
+
+        .book:hover {
+            transform: translateY(-5px);
+        }
+
+        .book img {
+            width: 150px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .book h3 {
+            margin: 12px 0 8px;
+        }
+
+        .book p {
+            margin: 7px 0;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #e63946;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #cart {
+            background-color: white;
+            margin-top: 40px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        #cart h2 {
+            text-align: left;
+        }
+
+        #cartItems {
+            padding-left: 20px;
+        }
+
+        .cart-item {
+            margin: 8px 0;
+        }
+
+        .total {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>📚 Online Book Store</h1>
+        <p>Find Your Favourite Books</p>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="#">Categories</a>
+        <a href="#cart">Cart 🛒</a>
+        <a href="#">Login</a>
+    </nav>
+
+    <!-- MAIN -->
+    <div class="container">
+
+        <h2>Available Books</h2>
+
+        <div class="books">
+
+            <!-- 1 -->
+            <div class="book">
+                <img src="images/book1.jpg" alt="PHP Programming">
+                <h3>PHP Programming</h3>
+                <p>Learn PHP Programming</p>
+                <p class="price">₹450</p>
+                <button onclick="addToCart('PHP Programming',450)">Add to Cart</button>
+            </div>
+
+            <!-- 2 -->
+            <div class="book">
+                <img src="images/book2.jpg" alt="Java Programming">
+                <h3>Java Programming</h3>
+                <p>Learn Java Programming</p>
+                <p class="price">₹500</p>
+                <button onclick="addToCart('Java Programming',500)">Add to Cart</button>
+            </div>
+
+            <!-- 3 -->
+            <div class="book">
+                <img src="images/book3.jpg" alt="Python Programming">
+                <h3>Python Programming</h3>
+                <p>Learn Python Programming</p>
+                <p class="price">₹550</p>
+                <button onclick="addToCart('Python Programming',550)">Add to Cart</button>
+            </div>
+
+            <!-- 4 -->
+            <div class="book">
+                <img src="images/book4.jpg" alt="C Programming">
+                <h3>C Programming</h3>
+                <p>Learn C Programming</p>
+                <p class="price">₹400</p>
+                <button onclick="addToCart('C Programming',400)">Add to Cart</button>
+            </div>
+
+            <!-- 5 -->
+            <div class="book">
+                <img src="images/book5.jpg" alt="C++ Programming">
+                <h3>C++ Programming</h3>
+                <p>Learn C++ Programming</p>
+                <p class="price">₹450</p>
+                <button onclick="addToCart('C++ Programming',450)">Add to Cart</button>
+            </div>
+
+            <!-- 6 -->
+            <div class="book">
+                <img src="images/book6.jpg" alt="HTML">
+                <h3>HTML</h3>
+                <p>Learn HTML</p>
+                <p class="price">₹300</p>
+                <button onclick="addToCart('HTML',300)">Add to Cart</button>
+            </div>
+
+            <!-- 7 -->
+            <div class="book">
+                <img src="images/book7.jpg" alt="CSS">
+                <h3>CSS</h3>
+                <p>Learn CSS</p>
+                <p class="price">₹350</p>
+                <button onclick="addToCart('CSS',350)">Add to Cart</button>
+            </div>
+
+            <!-- 8 -->
+            <div class="book">
+                <img src="images/book8.jpg" alt="JavaScript">
+                <h3>JavaScript</h3>
+                <p>Learn JavaScript</p>
+                <p class="price">₹500</p>
+                <button onclick="addToCart('JavaScript',500)">Add to Cart</button>
+            </div>
+
+            <!-- 9 -->
+            <div class="book">
+                <img src="images/book9.jpg" alt="SQL">
+                <h3>SQL</h3>
+                <p>Learn SQL Database</p>
+                <p class="price">₹400</p>
+                <button onclick="addToCart('SQL',400)">Add to Cart</button>
+            </div>
+
+            <!-- 10 -->
+            <div class="book">
+                <img src="images/book10.jpg" alt="DBMS">
+                <h3>DBMS</h3>
+                <p>Database Management System</p>
+                <p class="price">₹450</p>
+                <button onclick="addToCart('DBMS',450)">Add to Cart</button>
+            </div>
+
+            <!-- 11 -->
+            <div class="book">
+                <img src="images/book11.jpg" alt="Data Structures">
+                <h3>Data Structures</h3>
+                <p>Learn Data Structures</p>
+                <p class="price">₹550</p>
+                <button onclick="addToCart('Data Structures',550)">Add to Cart</button>
+            </div>
+
+            <!-- 12 -->
+            <div class="book">
+                <img src="images/book12.jpg" alt="Algorithms">
+                <h3>Algorithms</h3>
+                <p>Learn Algorithms</p>
+                <p class="price">₹500</p>
+                <button onclick="addToCart('Algorithms',500)">Add to Cart</button>
+            </div>
+
+            <!-- 13 -->
+            <div class="book">
+                <img src="images/book13.jpg" alt="Computer Networks">
+                <h3>Computer Networks</h3>
+                <p>Learn Computer Networks</p>
+                <p class="price">₹450</p>
+                <button onclick="addToCart('Computer Networks',450)">Add to Cart</button>
+            </div>
+
+            <!-- 14 -->
+            <div class="book">
+                <img src="images/book14.jpg" alt="Operating System">
+                <h3>Operating System</h3>
+                <p>Learn Operating System</p>
+                <p class="price">₹500</p>
+                <button onclick="addToCart('Operating System',500)">Add to Cart</button>
+            </div>
+
+            <!-- 15 -->
+            <div class="book">
+                <img src="images/book15.jpg" alt="Cyber Security">
+                <h3>Cyber Security</h3>
+                <p>Learn Cyber Security</p>
+                <p class="price">₹600</p>
+                <button onclick="addToCart('Cyber Security',600)">Add to Cart</button>
+            </div>
+
+            <!-- 16 -->
+            <div class="book">
+                <img src="images/book16.jpg" alt="Web Development">
+                <h3>Web Development</h3>
+                <p>Learn Web Development</p>
+                <p class="price">₹550</p>
+                <button onclick="addToCart('Web Development',550)">Add to Cart</button>
+            </div>
+
+            <!-- 17 -->
+            <div class="book">
+                <img src="images/book17.jpg" alt="React JS">
+                <h3>React JS</h3>
+                <p>Learn React JS</p>
+                <p class="price">₹650</p>
+                <button onclick="addToCart('React JS',650)">Add to Cart</button>
+            </div>
+
+            <!-- 18 -->
+            <div class="book">
+                <img src="images/book18.jpg" alt="Node JS">
+                <h3>Node JS</h3>
+                <p>Learn Node JS</p>
+                <p class="price">₹650</p>
+                <button onclick="addToCart('Node JS',650)">Add to Cart</button>
+            </div>
+
+            <!-- 19 -->
+            <div class="book">
+                <img src="images/book19.jpg" alt="MongoDB">
+                <h3>MongoDB</h3>
+                <p>Learn MongoDB</p>
+                <p class="price">₹600</p>
+                <button onclick="addToCart('MongoDB',600)">Add to Cart</button>
+            </div>
+
+            <!-- 20 -->
+            <div class="book">
+                <img src="images/book20.jpg" alt="Python Django">
+                <h3>Python Django</h3>
+                <p>Learn Django Framework</p>
+                <p class="price">₹600</p>
+                <button onclick="addToCart('Python Django',600)">Add to Cart</button>
+            </div>
+
+            <!-- 21 -->
+            <div class="book">
+                <img src="images/book21.jpg" alt="PHP Laravel">
+                <h3>PHP Laravel</h3>
+                <p>Learn Laravel Framework</p>
+                <p class="price">₹650</p>
+                <button onclick="addToCart('PHP Laravel',650)">Add to Cart</button>
+            </div>
+
+            <!-- 22 -->
+            <div class="book">
+                <img src="images/book22.jpg" alt="Git and GitHub">
+                <h3>Git & GitHub</h3>
+                <p>Learn Git and GitHub</p>
+                <p class="price">₹350</p>
+                <button onclick="addToCart('Git & GitHub',350)">Add to Cart</button>
+            </div>
+
+            <!-- 23 -->
+            <div class="book">
+                <img src="images/book23.jpg" alt="Machine Learning">
+                <h3>Machine Learning</h3>
+                <p>Learn Machine Learning</p>
+                <p class="price">₹700</p>
+                <button onclick="addToCart('Machine Learning',700)">Add to Cart</button>
+            </div>
+
+            <!-- 24 -->
+            <div class="book">
+                <img src="images/book24.jpg" alt="Artificial Intelligence">
+                <h3>Artificial Intelligence</h3>
+                <p>Learn Artificial Intelligence</p>
+                <p class="price">₹750</p>
+                <button onclick="addToCart('Artificial Intelligence',750)">Add to Cart</button>
+            </div>
+
+            <!-- 25 -->
+            <div class="book">
+                <img src="images/book25.jpg" alt="Computer Fundamentals">
+                <h3>Computer Fundamentals</h3>
+                <p>Computer Basics</p>
+                <p class="price">₹300</p>
+                <button onclick="addToCart('Computer Fundamentals',300)">Add to Cart</button>
+            </div>
+
+            <!-- 26 -->
+            <div class="book">
+                <img src="images/book26.jpg" alt="Software Engineering">
+                <h3>Software Engineering</h3>
+                <p>Learn Software Engineering</p>
+                <p class="price">₹500</p>
+                <button onclick="addToCart('Software Engineering',500)">Add to Cart</button>
+            </div>
+
+            <!-- 27 -->
+            <div class="book">
+                <img src="images/book27.jpg" alt="Programming in C">
+                <h3>Programming in C</h3>
+                <p>C Programming Guide</p>
+                <p class="price">₹400</p>
+                <button onclick="addToCart('Programming in C',400)">Add to Cart</button>
+            </div>
+
+            <!-- 28 -->
+            <div class="book">
+                <img src="images/book28.jpg" alt="Programming in Java">
+                <h3>Programming in Java</h3>
+                <p>Java Programming Guide</p>
+                <p class="price">₹500</p>
+                <button onclick="addToCart('Programming in Java',500)">Add to Cart</button>
+            </div>
+
+            <!-- 29 -->
+            <div class="book">
+                <img src="images/book29.jpg" alt="Full Stack Development">
+                <h3>Full Stack Development</h3>
+                <p>Learn Full Stack Development</p>
+                <p class="price">₹800</p>
+                <button onclick="addToCart('Full Stack Development',800)">Add to Cart</button>
+            </div>
+
+            <!-- 30 -->
+            <div class="book">
+                <img src="images/book30.jpg" alt="Computer Applications">
+                <h3>Computer Applications</h3>
+                <p>Computer Application Guide</p>
+                <p class="price">₹450</p>
+                <button onclick="addToCart('Computer Applications',450)">Add to Cart</button>
+            </div>
+
+        </div>
+
+        <!-- CART -->
+        <div id="cart">
+
+            <h2>🛒 Shopping Cart</h2>
+
+            <ul id="cartItems">
+                <li>No books added yet.</li>
+            </ul>
+
+            <p class="total">
+                Total: ₹<span id="total">0</span>
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Online Book Store | All Rights Reserved</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        let cart = [];
+
+        function addToCart(bookName, price) {
+
+            cart.push({
+                name: bookName,
+                price: price
+            });
+
+            displayCart();
+        }
+
+        function displayCart() {
+
+            let cartItems = document.getElementById("cartItems");
+            let total = document.getElementById("total");
+
+            cartItems.innerHTML = "";
+
+            let totalAmount = 0;
+
+            if (cart.length === 0) {
+
+                cartItems.innerHTML =
+                    "<li>No books added yet.</li>";
+
+            } else {
+
+                cart.forEach(function(book, index) {
+
+                    let li = document.createElement("li");
+
+                    li.className = "cart-item";
+
+                    li.innerHTML =
+                        book.name +
+                        " - ₹" +
+                        book.price +
+                        " <button onclick='removeFromCart(" +
+                        index +
+                        ")'>Remove</button>";
+
+                    cartItems.appendChild(li);
+
+                    totalAmount += book.price;
+
+                });
+
+            }
+
+            total.innerText = totalAmount;
+        }
+
+        function removeFromCart(index) {
+
+            cart.splice(index, 1);
+
+            displayCart();
+        }
+
+    </script>
+
+</body>
+</html>

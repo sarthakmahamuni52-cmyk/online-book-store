@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Success</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="login-container">
+    <h1>✅ Order Placed Successfully!</h1>
+    <p>Thank you for shopping with us.</p>
+
+    <br>
+
+    <a href="home.html">
+        <button>Back to Home</button>
+    </a>
+</div>
+
+</body>
+</html>// Search Books
+document.addEventListener("DOMContentLoaded", function () {
+
+    let search = document.getElementById("search");
+
+    if (search) {
+
+        search.addEventListener("keyup", function () {
+
+            let value = search.value.toLowerCase();
+
+            let books = document.querySelectorAll(".book");
+
+            books.forEach(function (book) {
+
+                let title = book.querySelector("h3").innerText.toLowerCase();
+
+                if (title.includes(value)) {
+                    book.style.display = "block";
+                } else {
+                    book.style.display = "none";
+                }
+
+            });
+
+        });
+
+    }
+
+});

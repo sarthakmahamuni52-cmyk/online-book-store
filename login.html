@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Book Store - Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="login-container">
+    <h1>📚 Online Book Store</h1>
+
+    <form id="loginForm">
+        <input type="text" id="username" placeholder="Enter Username" required>
+
+        <input type="password" id="password" placeholder="Enter Password" required>
+
+        <button type="submit">Login</button>
+        <p>Don't have an account?</p>
+
+<a href="register.html">Create New Account</a>
+    </form>
+
+    <p id="message"></p>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+document.getElementById("loginForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+
+    if(username === "admin" && password === "12345"){
+        alert("Login Successful");
+        window.location.href = "home.html";
+    }
+    else{
+        document.getElementById("message").innerHTML = "Invalid Username or Password";
+    }
+
+});
